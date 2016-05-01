@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="css/reset.css">
+		<style type="text/css">
+			html{
+				width: 100%;
+				height: 100%;
+				overflow-x: hidden;
+			}/*如果不在比body更高一级的层面上设置，会导致纵向不能滚动*/
+			body{
+				text-align: left;
+				width: 100%;
+				overflow: hidden;
+				background: #e9dfc7;
+			}
+			.m-read-content{
+				font-size: 14px;
+				line-height: 31px;
+				color: #555;
+				padding: 15px;
+			}
+			.m-read-content h4{
+				font-size: 20px;
+				letter-spacing: 2px;
+				color: #736357;
+				border-bottom: solid 1px #736357;
+				margin: 0 0 1em 0;
+			}
+			.m-read-content p{
+				text-indent: 2em;
+				margin: 0.5em 0;
+				letter-spacing: 0px;
+				line-height: 24px;
+			}
+			.u-tab{
+				height: 34px;
+				margin: 10px auto;
+				line-height: 34px;
+				border-radius: 8px;
+				border: 1px solid #858382;
+				font-size: 12px;
+				background: #000;
+				opacity: 0.9;
+			}
+			.u-tab li{
+				display: inline-block;
+				width: 49%;
+				border-right: 1px solid #858382;/*这么设置到导致两个按钮都有右边的白边，下面有伪类来解决*/
+				color: #fff;
+				text-align: center;
+			}
+			.u-tab li:nth-child(2){/*:nth-child(n) 选择器匹配属于其父元素的第 N 个子元素，不论元素的类型。*/
+				border-right: none;
+			}
+			.m-button-bar{
+				width: 70%;
+				max-width: 800px;
+				padding: 5px;
+				margin: 0 auto;
+			}
+			.top-nav{
+				position: fixed;
+				top: 0px;
+				height: 50px;
+				width: 100%;
+				z-index: 9999;
+				background: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root" class="container">
+			<div id="top-nav" class="top-nav">
+				<div class="icon-back"></div>
+				<div class="nav-title">返回书架</div>
+			</div>
+			<div id="fiction_chapter_title"></div>
+			<div id="fiction_container" class="m-read-content"><!-- m代表模块 -->
+				<h4>测试标题</h4>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+				<p>测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</p>
+			</div>
+			<div class="m-button-bar"><!-- 在底部控制上下章节的按钮 -->
+				<ul class="u-tab"><!-- u代表元件 -->
+					<li id="prev_button">上一章</li>
+					<li id="next_button">下一章</li>
+				</ul>
+			</div>
+		</div>
+		<script src="lib/zepto.min.js"></script>
+		<script>
+			window.jQuery = $;
+		</script>
+		<script src="js/jquery.base64.js"></script>
+		<script src="js/jquery.jsonp.js"></script>
+
+		<script>
+			
+		</script>
+	</body>
+</html>
